@@ -17,6 +17,8 @@
     padding: 10px;
     border: 1px solid #ccc;
     text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
     
 .table-body {
