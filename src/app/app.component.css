@@ -1,14 +1,19 @@
 .table {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 800px;
     border: 1px solid #ccc;
+    height: 400px;
+    overflow: scroll;
   }
   
 .table-header {
     display: flex;
     background-color: #f4f4f4;
     font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
     
 .header-item,
@@ -19,6 +24,8 @@
     text-align: center;
     text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
+    min-width: 100px;
 }
     
 .table-body {
@@ -32,4 +39,10 @@
     
 .table-row:hover {
     background-color: #f1f1f1;
+}
+
+.header-item:first-child,
+.table-cell:first-child {
+    position: sticky;
+    left: 0;
 }
