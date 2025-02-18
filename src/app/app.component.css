@@ -12,7 +12,7 @@
     background-color: #f4f4f4;
     font-weight: bold;
     position: sticky;
-    top: 0;
+    top: 0 !important;
     z-index: 2;
 }
     
@@ -45,4 +45,11 @@
 .table-cell:first-child {
     position: sticky;
     left: 0;
+    top: 0;
+    background-color: #fff; 
+}
+
+.table-header .header-item:first-child {
+    z-index: 4; 
+    background-color: #f4f4f4;
 }
