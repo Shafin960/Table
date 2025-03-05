@@ -1,24 +1,20 @@
 <div class="table">
   <div class="table-header">
-    <div class="header-item">First Name</div>
-    <div class="header-item">Last Name</div>
-    <div class="header-item">Email</div>
-    <div class="header-item">Phone</div>
-    <div class="header-item">Date of Birth</div>
-    <div class="header-item">Address</div>
-    <div class="header-item">Marital Status</div>
-    <div class="header-item">Designation</div>
+    <ng-container *ngFor="let column of columns">
+      <div class="header-item">{{ column.label }}</div>
+    </ng-container>
   </div>
   <div class="table-body">
-    <div class="table-row" *ngFor="let item of dataSource">
-      <div class="table-cell">{{ item.firstName }}</div>
-      <div class="table-cell">{{ item.lastName }}</div>
-      <div class="table-cell">{{ item.email }}</div>
-      <div class="table-cell">{{ item.phone }}</div>
-      <div class="table-cell">{{ item.dob }}</div>
-      <div class="table-cell">{{ item.address }}</div>
-      <div class="table-cell">{{ item.maritalStatus }}</div>
-      <div class="table-cell">{{ item.designation }}</div>
-    </div>
+    <ng-container *ngFor="let _ of [].constructor(dataSource.length); let rowIndex = index">
+      <div class="table-row" [attr.data-row-index]="rowIndex">
+        <ng-container *ngFor="let column of columns">
+          <div class="table-cell" 
+               [ngClass]="{'first-column': column.prop === 'firstName'}"
+               [attr.data-row-index]="rowIndex">
+            {{ dataSource[rowIndex][column.prop] }}
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
   </div>
 </div>

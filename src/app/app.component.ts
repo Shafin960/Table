@@ -1,17 +1,17 @@
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgFor],
+  imports: [RouterOutlet, NgFor, NgClass],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 
 export class AppComponent {
   title = 'table';
-  dataSource = [
+  dataSource : Person[]= [
     {
       firstName: "John",
       lastName: "Doe",
@@ -213,5 +213,32 @@ export class AppComponent {
       designation: "Database Administrator"
     }
   ];
-  
+  columns = [
+    { prop: 'firstName', label: 'First Name' },
+    { prop: 'lastName', label: 'Last Name' },
+    { prop: 'email', label: 'Email' },
+    { prop: 'phone', label: 'Phone' },
+    { prop: 'dob', label: 'Date of Birth' },
+    { prop: 'address', label: 'Address' },
+    { prop: 'maritalStatus', label: 'Marital Status' },
+    { prop: 'designation', label: 'Designation' }
+  ];
+}
+
+interface Person {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  dob: string;
+  address: string;
+  maritalStatus: string;
+  designation: string;
+  [key: string]: string; 
+}
+
+
+interface Column {
+  prop: keyof Person; 
+  label: string;
 }
